@@ -8,11 +8,13 @@ import type {
   ThemePageData,
   ThemeProjectHomePageFrontmatter,
 } from "../../../shared/index.js";
+import type { BlogOptions } from "../../typings/index.js";
 
 // oxlint-disable-next-line complexity
 export const injectBlogBasicInfo = (
   page: Page<ThemePageData>,
   info: Partial<ArticleInfoData>,
+  blogOptions?: BlogOptions,
 ): void => {
   const frontmatter = page.frontmatter as
     | ThemeProjectHomePageFrontmatter
@@ -44,8 +46,13 @@ export const injectBlogBasicInfo = (
     const date = getDate(page.frontmatter.date);
 
     if (date) info.date = date.getTime();
-  } else if (createdTime) {
-    info.date = createdTime;
+  } else {
+    const { updatedTime } = page.data.git ?? {};
+    const timelineConfig = blogOptions?.timeline;
+    const useUpdateTime = typeof timelineConfig === "object" && timelineConfig.useUpdateTime;
+
+    if (useUpdateTime && updatedTime) info.date = updatedTime;
+    else if (createdTime) info.date = createdTime;
   }
 
   // Resolve category
