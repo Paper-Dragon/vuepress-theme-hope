@@ -114,9 +114,17 @@ frontmatter 配置。
 
 星标文章列表路由路径。
 
-@`plugins.blog.timeline` type=string default=`/timeline/`
+@`plugins.blog.timeline` type=`string | TimelineOptions` default=`/timeline/`
 
-时间线列表路由路径。
+时间线列表路由路径或时间线配置。你可以设置字符串作为时间线路由路径，或传入对象进行配置。
+
+@@`plugins.blog.timeline.path` type=string default=`/timeline/`
+
+时间线路由路径。
+
+@@`plugins.blog.timeline.useUpdateTime` type=boolean
+
+是否使用更新时间而不是创建时间进行排序。
 
 @`plugins.blog.hotReload` type=boolean default="是否在使用 `--debug` 标识"
 

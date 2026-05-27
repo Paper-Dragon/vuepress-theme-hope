@@ -61,6 +61,7 @@ export default hopeTheme(
           link: "https://theme-hope.vuejs.press",
         },
       },
+      timeline: "红了樱桃，绿了芭蕉",
     },
 
     locales: {
@@ -184,6 +185,10 @@ export default hopeTheme(
 
     plugins: {
       blog: {
+        timeline: {
+          path: "/timeline/",
+          useUpdateTime: true,
+        },
         type: [
           {
             key: "tutorial",

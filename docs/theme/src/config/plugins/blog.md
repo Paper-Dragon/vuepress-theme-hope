@@ -114,9 +114,17 @@ Tag list route path. `:name` will be replaced by tag name.
 
 Star article list route path.
 
-@`plugins.blog.timeline` type=string default=`/timeline/`
+@`plugins.blog.timeline` type=`string | TimelineOptions` default=`/timeline/`
 
-Timeline list route path.
+Timeline list route path or timeline configuration. You can set a string as timeline route path, or pass an object to configure it.
+
+@@`plugins.blog.timeline.path` type=string default=`/timeline/`
+
+Timeline route path.
+
+@@`plugins.blog.timeline.useUpdateTime` type=boolean
+
+Whether to use update time instead of create time for sorting.
 
 @`plugins.blog.hotReload` type=boolean default="Whether using `--debug` flag"
 

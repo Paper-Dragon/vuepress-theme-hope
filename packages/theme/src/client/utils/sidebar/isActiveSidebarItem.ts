@@ -9,6 +9,6 @@ export const isActiveSidebarItem = (
   item: SidebarItem,
 ): boolean =>
   "children" in item
-    ? (Boolean(item.prefix) && isActiveLink(route, item.prefix)) ||
-      item.children.some((child) => isActiveSidebarItem(route, child))
+    ? ((Boolean(item.prefix) && isActiveLink(route, item.prefix)) ??
+      item.children.some((child) => isActiveSidebarItem(route, child)))
     : isActiveItem(route, item);
