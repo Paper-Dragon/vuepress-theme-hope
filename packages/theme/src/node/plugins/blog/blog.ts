@@ -54,7 +54,7 @@ export const getBlogPlugin = (
       const info: Partial<ArticleInfoData> = {};
       const isEncrypted = isPageEncrypted(page);
 
-      injectBlogBasicInfo(page, info);
+      injectBlogBasicInfo(page, info, blogOptions);
 
       // Resolve encrypted
       if (isEncrypted) info.isEncrypted = true;
